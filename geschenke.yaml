@@ -1,0 +1,39 @@
+product-id: 779
+media-path: oggs/%s
+comment: Geschenke verteilen mit dem tiptoi
+init: $wechsel:=2 $tt:=0
+welcome: start
+# Spiellogik
+scripts:
+  R:
+  - $wechsel==2? P(v_R1,v_R2,v_R3) $wechsel:=0 J(Wechsel)
+  - P(v_R1,v_R2,v_R3) $wechsel+=1
+  M:
+  - $wechsel==2? P(v_M1,v_M2,v_M3) $wechsel:=0 J(Wechsel)
+  - P(v_M1,v_M2,v_M3) $wechsel+=1
+  N:
+  - $wechsel==2? P(v_N1,v_N2,v_N3) $wechsel:=0 J(Wechsel)
+  - P(v_N1,v_N2,v_N3) $wechsel+=1
+  J:
+  - $wechsel==2? P(v_J1,v_J2,v_J3) $wechsel:=0 J(Wechsel)
+  - P(v_J1,v_J2,v_J3) $wechsel+=1
+  E:
+  - $wechsel==2? P(v_E1,v_E2,v_E3) $wechsel:=0 J(Wechsel)
+  - P(v_E1,v_E2,v_E3) $wechsel+=1
+  Wechsel:
+  - $tt==0? P(tt_J) $tt:=1
+  - $tt==1? P(tt_N) $tt:=0
+# Codezuweisung
+scriptcodes:
+  R: 7001
+  M: 7002
+  N: 7003
+  J: 7004
+  E: 7005
+#speak:
+#  - language: de
+#    start: "Hallo, ich bin der Schneemann und ich erkläre Euch, wie dieses Jahr die Weihnachtsgeschenke verteilt werden. An jedem Geschenk findet ihr einen kleinen Anhänger. Wenn ihr diesen berührt, sagt Euch der tiptoi für wen das Geschenk ist. Bitte gebt das Geschenk an sie oder ihn weiter. Und jeder darf mal den tiptoi haben. So und nun viel Freude mit den Geschenken und frohe Weihnachten!"
+#    v_R1: "Dieses Geschenk ist für R."
+#    v_R2: "Dieses Päckchen darf R auspacken."
+#    v_R3: "Das darf R aufmachen."
+#    tt_N: "Jetzt darf N mal den tiptoi haben."
